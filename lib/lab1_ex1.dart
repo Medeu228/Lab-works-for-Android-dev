@@ -7,7 +7,8 @@ double processOrder({
   final double discount = (promoCode == 'SAVE10') ? itemPrice * 0.10 : 0.0;
   final double priceAfterDiscount = itemPrice - discount;
 
-  final double delivery = deliveryFee ?? 500.0;
+  final double baseDelivery = deliveryFee ?? 0.0;
+  final double delivery = baseDelivery < 1000 ? 1000.0 : baseDelivery;
 
   final double total = priceAfterDiscount + delivery;
 
@@ -28,7 +29,12 @@ void main() {
 
   processOrder(orderId: 'A002', itemPrice: 3000.0);
 
-  processOrder(orderId: 'A003', itemPrice: 2000.0, promoCode: 'SAVE10', deliveryFee: 0.0);
+  processOrder(
+    orderId: 'A003',
+    itemPrice: 2000.0,
+    promoCode: 'SAVE10',
+    deliveryFee: 500,
+  );
 
   processOrder(orderId: 'A004', itemPrice: 1500.0, promoCode: 'WRONGCODE');
 }
