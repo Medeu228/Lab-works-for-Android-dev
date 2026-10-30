@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../models/product.dart';
 import '../widgets/product_tile.dart';
 import 'detail_screen.dart';
@@ -26,9 +27,6 @@ class FeedScreen extends StatelessWidget {
             isFavorite: favoriteIds.contains(product.id),
             onToggleFavorite: () => onToggleFavorite(product.id),
             onTap: () {
-              // Navigator.push with arguments: the full Product object goes
-              // straight into DetailScreen's constructor (title, description,
-              // icon/image, price, category — everything at once).
               Navigator.push(
                 context,
                 MaterialPageRoute(

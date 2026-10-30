@@ -1,9 +1,3 @@
-// LAB 6 / Homework 6: User Registration & Form Validation
-// Form, TextFormField, GlobalKey<FormState>, TextEditingController,
-// Checkbox, SnackBar / AlertDialog.
-//
-// This file replaces lib/main.dart in a Flutter project (flutter create my_app).
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,7 +34,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _confirmPasswordController = TextEditingController();
 
   bool _acceptedTerms = false;
-  bool _showTermsError = false; // only shown after a failed submit attempt
+  bool _showTermsError = false;
   String? _selectedRole;
 
   @override
@@ -52,7 +46,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     super.dispose();
   }
 
-  // ----- validators -----
   String? _validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Full name is required';
@@ -107,7 +100,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       return;
     }
 
-    // everything valid — print to terminal
     debugPrint('--- Registration submitted ---');
     debugPrint('Name: ${_nameController.text}');
     debugPrint('Email: ${_emailController.text}');
@@ -198,15 +190,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 items: const [
                   DropdownMenuItem(value: 'Student', child: Text('Student')),
                   DropdownMenuItem(value: 'Teacher', child: Text('Teacher')),
-                  DropdownMenuItem(value: 'Developer', child: Text('Developer')),
+                  DropdownMenuItem(
+                    value: 'Developer',
+                    child: Text('Developer'),
+                  ),
                 ],
                 onChanged: (value) => setState(() => _selectedRole = value),
-                validator: (value) => value == null ? 'Please select a role' : null,
+                validator: (value) =>
+                    value == null ? 'Please select a role' : null,
               ),
               const SizedBox(height: 16),
 
-              // Checkbox is not part of Form validation by default, so it's
-              // checked manually in _submit() and the error is shown here.
               CheckboxListTile(
                 value: _acceptedTerms,
                 onChanged: (value) {
@@ -224,7 +218,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   padding: const EdgeInsets.only(left: 12),
                   child: Text(
                     'You must accept the terms to continue',
-                    style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: 12),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               const SizedBox(height: 24),
@@ -233,7 +230,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _submit,
-                  style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 16)),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
                   child: const Text('Register'),
                 ),
               ),

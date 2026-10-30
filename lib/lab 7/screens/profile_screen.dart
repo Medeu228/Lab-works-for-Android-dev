@@ -17,10 +17,16 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Center(
-            child: Text('Medeu Yakubov', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Text(
+              'Medeu Yakubov',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
           const Center(
-            child: Text('medeu@narxoz.kz', style: TextStyle(color: Colors.grey)),
+            child: Text(
+              'medeu.yakubov@narxoz.kz',
+              style: TextStyle(color: Colors.grey),
+            ),
           ),
           const SizedBox(height: 24),
           const Divider(),
